@@ -50,5 +50,18 @@ RSpec.describe 'customers show page' do
       expect(page).to have_content(@item_3.name)
       expect(page).to have_content(@item_3.price)
     end
+
+    it 'has add item form' do
+      visit "/customers/#{@customer_1.id}"
+      expect(find('form')).to have_content('Add item')   
+    end
+
+    it 'adds item and redirects back to page' do
+      visit "/customers/#{@customer_1.id}"
+      fill_in 'Add item', with: "#{@item_4.id}"
+      click_button 'Save'
+      expect(page).to have_content(@item_4.name)
+      expect(page).to have_current_path("/customers/#{@customer_1.id}")
+    end
   end
 end

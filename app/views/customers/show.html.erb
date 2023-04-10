@@ -2,3 +2,10 @@
 <p> Items: <% @customer.customer_items.each do |item| %> </p>
   <p> <%= item.name %>, price: <%= item.price %>, store: <%= item.supermarket.name %> </p>
 <% end %>
+
+<%= form_with url: "/customers/#{@customer.id}/customer_items/new", method: :post, local: true do |f| %>
+<p> <%= f.label :add_item %> </p>
+<p> <%= f.text_field :add_item %> </p>
+<%= f.submit %>
+<% end %>
+
