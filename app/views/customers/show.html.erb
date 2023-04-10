@@ -1,0 +1,4 @@
+<p> Name: <%= @customer.name %> </p>
+<p> Items: <% @customer.customer_items.each do |item| %> </p>
+  <p> <%= item.name %>, price: <%= item.price %>, store: <%= item.supermarket.name %> </p>
+<% end %>
